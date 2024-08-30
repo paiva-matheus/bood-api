@@ -1,6 +1,5 @@
 import { RequestHandler } from 'express';
 import * as PropertyService from '@/properties/property.service';
-import { UUID } from 'crypto';
 import { AppError } from '@/lib/utilityClasses';
 
 export const findAllProperties: RequestHandler = async (req, res) => {
@@ -27,7 +26,9 @@ export const findAllProperties: RequestHandler = async (req, res) => {
 };
 
 export const findProperty: RequestHandler = async (req, res, next) => {
-  const property = await PropertyService.getPropertyById(req.params.id as UUID);
+  const property = await PropertyService.getPropertyById(
+    req.params.id as string
+  );
 
   if (!property) {
     next(new AppError('notFound', `Property Not Found`));
