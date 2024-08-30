@@ -37,6 +37,7 @@ describe('properties routes', () => {
     });
 
     test('returns 200', async () => {
+      const { status, body } = await request(app).get('/properties').send();
       const properties = await prisma.property.findMany({
         select: {
           id: true,
@@ -47,8 +48,6 @@ describe('properties routes', () => {
           features: true,
         },
       });
-
-      const { status, body } = await request(app).get('/properties').send();
 
       expect(status).toBe(200);
       expect(body.data).toStrictEqual(properties);
