@@ -17,6 +17,8 @@ Now server is running in [`localhost:8000`](http://localhost:8000).
 
 - To populate the database with some properties, you can run: `npx prisma db seed`
 
+## Tests
+
 **To test application:**
 
 - Unit tests run: `npm run test:unit`
